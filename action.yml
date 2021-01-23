@@ -28,6 +28,11 @@ inputs:
       The version to be associated with the GitHub release that's created or updated.
       This will override any version calculated by the release-drafter.
     required: false
+  previous-version:
+    description: |
+      The last release (tag_name) to be used when calculating the start of the change log.
+      This will override any version calculated by the release-drafter.
+    required: false
   publish:
     description: |
       A boolean indicating whether the release being created or updated should be immediately published.

@@ -16,7 +16,14 @@ module.exports = (app) => {
   const event = runnerIsActions() ? '*' : 'push'
 
   app.on(event, async (context) => {
-    const { shouldDraft, configName, version, tag, name } = getInput()
+    const {
+      shouldDraft,
+      configName,
+      version,
+      tag,
+      name,
+      previousVersion,
+    } = getInput()
 
     const config = await getConfig({
       context,
@@ -39,6 +46,7 @@ module.exports = (app) => {
       ref,
       context,
       config,
+      previousVersion,
     })
     const {
       commits,
@@ -99,6 +107,7 @@ function getInput({ config } = {}) {
       version: core.getInput('version') || undefined,
       tag: core.getInput('tag') || undefined,
       name: core.getInput('name') || undefined,
+      previousVersion: core.getInput('previous-version') || undefined,
     }
   }
 
