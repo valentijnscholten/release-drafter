@@ -16,7 +16,14 @@ module.exports = (app) => {
   const event = runnerIsActions() ? '*' : 'push'
 
   app.on(event, async (context) => {
-    const { shouldDraft, configName, version, tag, name, previousVersion } = getInput()
+    const {
+      shouldDraft,
+      configName,
+      version,
+      tag,
+      name,
+      previousVersion,
+    } = getInput()
 
     const config = await getConfig({
       context,
